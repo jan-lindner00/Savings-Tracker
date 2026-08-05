@@ -22,9 +22,6 @@ export default function GoalDetails(){
     const goals = useSubscribeGoals()
     const deposits = useSubscribeDeposits()
     const goal = goals.find(goal => goal.id === goalId)
-    if(!goal){
-        notFound()
-    }
     const depositsForGoal = deposits.filter(deposit => deposit.goal_id === goalId)
     const id = useId()
     const [updateModalOpen, setUpdateModalOpen] = useState<boolean>(false)
@@ -97,6 +94,10 @@ export default function GoalDetails(){
         return Temporal.PlainDate.compare(lastDepositDate, deadlineDate) <= 0 ? ` Finished before your ${formatDateGoals(deadline, true)} deadline.` : (
             ` Didn't finish before your ${formatDateGoals(deadline, true)} deadline.`
         )
+    }
+
+     if(!goal){
+        notFound()
     }
 
     const depositHistoryEls = depositsForGoal.map((deposit)=>{
