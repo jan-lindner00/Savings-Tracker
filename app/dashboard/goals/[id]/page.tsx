@@ -248,7 +248,7 @@ export default function GoalDetails(){
                                 <input
                                     className={stylesInputs}
                                     type="number"
-                                    name="deposit-amount"
+                                    name="sr-only"
                                     value={amount}
                                     onChange={(e)=> setAmount(calcSetAmount(e.target.value))}
                                     min="0"
