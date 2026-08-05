@@ -17,8 +17,6 @@ import clsx from "clsx"
 
 export default function GoalModalCreate(){
     const {push} = useRouter()
-    const pathname = usePathname()
-    const searchParams = useSearchParams()
     const {setShowGoalModal} = useAppContext()
     const [deadlineDate, setDeadlineDate] = useState<Date | null>(null)
     const [amount, setAmount] = useState<string>("")
@@ -67,8 +65,7 @@ export default function GoalModalCreate(){
             }
             
             setShowGoalModal(false)
-            const urlSearchParams = new URLSearchParams(searchParams)
-            push(`${pathname}?${urlSearchParams.toString()}`)
+            push("/dashboard")
            
             return null
         }catch(error){
