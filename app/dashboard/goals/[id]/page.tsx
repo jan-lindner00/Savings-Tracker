@@ -242,7 +242,7 @@ export default function GoalDetails(){
                             Amount
                             <div 
                                 style={amount === "" || parseFloat(amount) <= 0 ? {color: "var(--neutral-300)"} : undefined}
-                                className="amount-preview"
+                                className={`amount-preview flex items-center gap-3 cursor-pointer relative ${stylesInputs}`}
                                
                             >
                                 <input
