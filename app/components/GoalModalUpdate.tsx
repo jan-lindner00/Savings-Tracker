@@ -115,6 +115,7 @@ export default function GoalModalUpdate({ setIsGoalModalOpen, goalId, defaultNam
                             name="goal-name"
                             maxLength={100}
                             aria-required="true"
+                            defaultValue={defaultName}
                             required />
                     </label>
                     <label className={labelStyles}>
