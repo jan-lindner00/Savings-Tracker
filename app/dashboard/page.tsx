@@ -169,7 +169,7 @@ export default function Dashboard(){
                             Completed goals
                         </h2>
                         <p 
-                            className={`font-bri text-[2.75rem] md:text-[4rem] font-semibold tracking-[-.3px] ${activeGoals ? "text-green-500": "text-neutral-400"}`}
+                            className={`font-bri text-[2.75rem] md:text-[4rem] font-semibold tracking-[-.3px] ${completedGoals ? "text-green-500": "text-neutral-400"}`}
                         >
                             {completedGoals}
                         </p>
