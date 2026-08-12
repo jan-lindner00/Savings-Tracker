@@ -83,7 +83,7 @@ export default function GoalModalCreate(){
             return
         }
         goalModalRef.current.showModal()
-    })
+    }, [])
 
     const stylesInputs = clsx(`w-full bg-neutral-700 p-4 rounded-[.5rem] border
                placeholder:font-inherit placeholder:text-neutral-300`, error && "border-red-500", 
