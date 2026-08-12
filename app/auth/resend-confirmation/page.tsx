@@ -109,7 +109,7 @@ export default function ResendConfirmation(){
                 </button>
                 <div className="flex flex-col gap-3 mt-2">
                     {success && (
-                        <p className="text-neutral-0">
+                        <p aria-live="polite" className="text-neutral-0">
                             {"We've send an email to "} 
                             <span className="text-neutral-300">
                                 {email}
