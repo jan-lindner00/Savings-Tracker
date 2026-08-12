@@ -66,7 +66,7 @@ export default function GoalDetails(){
                 .from("deposits")
                 .insert({
                     goal_id: goalId,
-                    amount: amount,
+                    amount: depositAmount,
                     note: note || null
                 })
             if(error){
