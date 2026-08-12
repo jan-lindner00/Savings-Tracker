@@ -207,7 +207,7 @@ export default function Dashboard(){
                         <Sort />
                     </div>
                 </div>
-                {goals.length > 0 ? (
+                {filteredGoals.length > 0 ? (
                 <div className="goals-grid grid gap-6">
                     {sortedGoals.map((goal)=>{
                         return (
@@ -215,7 +215,7 @@ export default function Dashboard(){
                         )
                     })}    
                 </div>
-                ) : filteredGoals.length > 0 ? (
+                ) : goals.length > 0 ? (
                     <div className="py-10 px-4 rounded-[1rem] max-w-[80rem] w-full mx-auto">
                         <h2 
                             className="text-[2rem] leading-[1.2] my-5"
