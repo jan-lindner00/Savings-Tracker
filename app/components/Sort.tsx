@@ -89,7 +89,7 @@ export default function Filter(){
     return (
         <div className="relative text-[1rem] leading-[1.5] tracking-[-.3px] font-medium">
             <button 
-                className="w-[163.5px] md:w-[7.25rem] h-12 flex justify-center items-center gap-[.625rem]
+                className="w-full min-w-[100px] xs:w-[163.5px] md:w-[7.25rem] h-12 flex justify-center items-center gap-[.625rem]
                 bg-neutral-800 border border-neutral-600 rounded-full"
                 ref={buttonRef}
                 aria-label="Sort goals"
