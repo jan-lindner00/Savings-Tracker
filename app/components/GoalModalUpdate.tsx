@@ -89,6 +89,7 @@ export default function GoalModalUpdate({ setIsGoalModalOpen, goalId, defaultNam
 
     return(
         <dialog 
+            aria-label={`Edit goal ${defaultName}`}
             ref={modalRef}
             tabIndex={0}
             className="py-5 px-4 md:p-8 relative rounded-[1rem] bg-neutral-800 border border-neutral-600

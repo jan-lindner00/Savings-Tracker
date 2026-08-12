@@ -92,7 +92,8 @@ export default function GoalModalCreate(){
     const labelStyles = "flex flex-col gap-3"
     
     return(
-        <dialog 
+        <dialog
+            aria-label="New goal" 
             ref={goalModalRef}
             tabIndex={0}
             className="py-5 px-4 md:p-8 relative rounded-[1rem] bg-neutral-800 border border-neutral-600

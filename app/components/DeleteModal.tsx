@@ -49,6 +49,7 @@ export default function DeleteModal({goalId, goalName, setModalOpen}: DeleteModa
     
     return (
         <dialog
+            aria-label={`Delete goal ${goalName}`}
             ref={modalRef}
             className="py-5 px-4 md:p-8 relative rounded-[1rem] bg-neutral-800 border border-neutral-600
             w-[calc(100vw-2rem)] h-fit max-w-[42.5rem] mx-auto mt-[50dvh] -translate-y-1/2"
