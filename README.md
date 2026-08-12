@@ -68,9 +68,9 @@ Users should be able to:
 
 ### Screenshot
 
-![](/screenshot-login.png)
-![](/screenshot-dashboard.png)
-![](/screenshot-goal.png)
+![](/public/screenshot-login.png)
+![](/public/screenshot-dashboard.png)
+![](/public/screenshot-goal.png)
 
 
 ### Links
