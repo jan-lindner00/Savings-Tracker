@@ -36,7 +36,7 @@ export default function Dashboard(){
 
     const sortedGoals = useMemo(()=>{
         if(searchParams.get("sort_by")?.toLowerCase() === "alphabetical"){
-            return filteredGoals.sort((a, b) => {
+            return [...filteredGoals].sort((a, b) => {
                 if(a.name.toLowerCase() < b.name.toLowerCase()){
                     return -1
                 }
@@ -47,7 +47,7 @@ export default function Dashboard(){
             })
         }
         if(searchParams.get("sort_by")?.toLowerCase() === "progress_asc"){
-            return filteredGoals.sort((a, b) => {
+            return [...filteredGoals].sort((a, b) => {
                 if((a.saved_money / a.target) < (b.saved_money / b.target)){
                     return -1
                 }
@@ -58,7 +58,7 @@ export default function Dashboard(){
             })
         }
         if(searchParams.get("sort_by")?.toLowerCase() === "progress_desc"){
-            return filteredGoals.sort((a, b) => {
+            return [...filteredGoals].sort((a, b) => {
                 if((a.saved_money / a.target) > (b.saved_money / b.target)){
                     return -1
                 }
@@ -69,7 +69,7 @@ export default function Dashboard(){
             })
         }
         if(searchParams.get("sort_by")?.toLowerCase() === "amount_saved"){
-            return filteredGoals.sort((a, b) => {
+            return [...filteredGoals].sort((a, b) => {
                 if(a.saved_money > b.saved_money){
                     return -1
                 }
@@ -80,7 +80,7 @@ export default function Dashboard(){
             })
         }
         if(searchParams.get("sort_by")?.toLowerCase() === "deadline"){
-            return filteredGoals.sort((a, b) => {
+            return [...filteredGoals].sort((a, b) => {
                 if(a.deadline === null && b.deadline !== null){
                     return 1
                 }
