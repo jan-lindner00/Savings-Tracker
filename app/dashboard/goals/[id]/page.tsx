@@ -195,7 +195,7 @@ export default function GoalDetails(){
                             </p>
                             <div className="mt-10 grid grid-cols-[97px_1fr] md:grid-cols-[132px_1fr]">
                                 <div className="flex flex-col gap-2">
-                                    <p className="text-[2rem] leading-[1.2] font-bold">5</p>
+                                    <p className="text-[2rem] leading-[1.2] font-bold">{depositsForGoal.length}</p>
                                     <p className="uppercase leading-[1.5] tracking-[-.3px] font-medium">Deposits</p>
                                 </div>
                                 <div className="flex flex-col gap-2 pl-6 md:pl-8 border-l border-[rgba(255,255,255,0.3)]">
