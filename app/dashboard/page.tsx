@@ -136,11 +136,11 @@ export default function Dashboard(){
             <section className="w-full max-w-[80rem] mx-auto">
                 <div className="grid grid-rows-[repeat(3, 130px)] md:grid-rows-[9.25rem 9.875rem] md:grid-cols-2 2xl:grid-cols-4 gap-4 md:gap-6 mb-4 md:mb-6">
                     <div className="total-savings p-4 md:p-5 flex flex-col justify-between rounded-[1rem] relative overflow-hidden md:col-span-2">
-                        <h2 
+                        <h1 
                             className="text-[1rem] font-semibold leading-[1.4] tracking-[-.3px]"
                         >
                             Total savings
-                        </h2>
+                        </h1>
                         <p className="font-bri text-[2.75rem] md:text-[4rem] font-semibold tracking-[-.3px]"
                         >
                             ${formatCurrency(savedAmount.toString())}
@@ -201,7 +201,7 @@ export default function Dashboard(){
             </section>
             <section className="mt-13 max-w-[80rem] w-full mx-auto">
                 <div className="mb-6 flex flex-col gap-5 md:flex-row md:justify-between">
-                    <h1 className="text-[2rem] font-bold leading-[1.2]">Your goals</h1>
+                    <h2 className="text-[2rem] font-bold leading-[1.2]">Your goals</h2>
                     <div className="flex gap-4 max-xs:justify-between">
                         <Filter />
                         <Sort />
