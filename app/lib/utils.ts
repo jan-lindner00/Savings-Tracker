@@ -1,7 +1,9 @@
+"use client"
 import supabaseClient from "@/app/lib/supabase/client"; 
 import { withScope, captureException } from "@sentry/nextjs";
 import {  PostgrestError } from "@supabase/supabase-js";
 import { Temporal } from "@js-temporal/polyfill";
+import { Deposit } from "./types";
 
 export async function trySupabase<T>(operation: () => PromiseLike<{data: T | null, error: PostgrestError | null}>):
  Promise<{success: boolean, data?: T | undefined, error?: string | undefined  }>
@@ -284,3 +286,134 @@ export const quotes = [
     quote: "Save today, enjoy tomorrow."
   }
 ];
+
+export default function getDepositsStats(deposits: Deposit[], width: number){
+    const currentMonth = Temporal.Now.plainDateISO().month
+    const currentYear = Temporal.Now.plainDateISO().year
+   
+    
+    const months = [
+        {
+            id: 0,
+            year: currentYear,
+            name: "Jan",
+            saved_amount: deposits.filter((deposit)=> {
+                const date = Temporal.Now.plainDateISO(deposit.created_at)
+                return date.month === 1 && date.year === currentYear
+            }).reduce((acc, current)=> acc + current.amount, 0)
+        },
+        {
+            id: 1,
+            year: currentMonth < 2 ? currentYear - 1 : currentYear,
+            name: "Feb",
+            saved_amount: deposits.filter((deposit)=> {
+                const date = Temporal.Now.plainDateISO(deposit.created_at)
+                return date.month === 2 && date.year === (currentMonth < 2 ? currentYear - 1 : currentYear)
+            }).reduce((acc, current)=> acc + current.amount, 0)
+        },
+        {
+            id: 2,
+            year: currentMonth < 3 ? currentYear - 1 : currentYear,
+            name: "Mar",
+            saved_amount: deposits.filter((deposit)=> {
+                const date = Temporal.Now.plainDateISO(deposit.created_at)
+                return date.month === 3 && date.year === (currentMonth < 3 ? currentYear - 1 : currentYear)
+            }).reduce((acc, current)=> acc + current.amount, 0)
+        },
+        {
+            id: 3,
+            year: currentMonth < 4 ? currentYear - 1 : currentYear,
+            name: "Apr",
+            saved_amount: deposits.filter((deposit)=> {
+                const date = Temporal.Now.plainDateISO(deposit.created_at)
+                return date.month === 4 && date.year === (currentMonth < 4 ? currentYear - 1 : currentYear)
+            }).reduce((acc, current)=> acc + current.amount, 0)
+        },
+        {
+            id: 4,
+            year: currentMonth < 5 ? currentYear - 1 : currentYear,
+            name: "May",
+            saved_amount: deposits.filter((deposit)=> {
+                const date = Temporal.Now.plainDateISO(deposit.created_at)
+                return date.month === 5 && date.year === (currentMonth < 5 ? currentYear - 1 : currentYear)
+            }).reduce((acc, current)=> acc + current.amount, 0)
+        },
+        {
+            id: 5,
+            year: currentMonth < 6 ? currentYear - 1 : currentYear,
+            name: "Jun",
+            saved_amount: deposits.filter((deposit)=> {
+                const date = Temporal.Now.plainDateISO(deposit.created_at)
+                return date.month === 6 && date.year === (currentMonth < 6 ? currentYear - 1 : currentYear)
+            }).reduce((acc, current)=> acc + current.amount, 0)
+        },
+        {
+            id: 6,
+            year: currentMonth < 7 ? currentYear - 1 : currentYear,
+            name: "Jul",
+            saved_amount: deposits.filter((deposit)=> {
+                const date = Temporal.Now.plainDateISO(deposit.created_at)
+                return date.month === 7 && date.year === (currentMonth < 7 ? currentYear - 1 : currentYear)
+            }).reduce((acc, current)=> acc + current.amount, 0)
+        },
+        {
+            id: 7,
+            year: currentMonth < 8 ? currentYear - 1 : currentYear,
+            name: "Aug",
+            saved_amount: deposits.filter((deposit)=> {
+                const date = Temporal.Now.plainDateISO(deposit.created_at)
+                return date.month === 8 && date.year === (currentMonth < 8 ? currentYear - 1 : currentYear)
+            }).reduce((acc, current)=> acc + current.amount, 0)
+        },
+        {
+            id: 8,
+            year: currentMonth < 9 ? currentYear - 1 : currentYear,
+            name: "Sep",
+            saved_amount: deposits.filter((deposit)=> {
+                const date = Temporal.Now.plainDateISO(deposit.created_at)
+                return date.month === 9 && date.year === (currentMonth < 9 ? currentYear - 1 : currentYear)
+            }).reduce((acc, current)=> acc + current.amount, 0)
+        },
+        {
+            id: 9,
+            year: currentMonth < 10 ? currentYear - 1 : currentYear,
+            name: "Oct",
+            saved_amount: deposits.filter((deposit)=> {
+                const date = Temporal.Now.plainDateISO(deposit.created_at)
+                return date.month === 10 && date.year === (currentMonth < 10 ? currentYear - 1 : currentYear)
+            }).reduce((acc, current)=> acc + current.amount, 0)
+        },
+        {
+            id: 10,
+            year: currentMonth < 11 ? currentYear - 1 : currentYear,
+            name: "Nov",
+            saved_amount: deposits.filter((deposit)=> {
+                const date = Temporal.Now.plainDateISO(deposit.created_at)
+                return date.month === 11 && date.year === (currentMonth < 11 ? currentYear - 1 : currentYear)
+            }).reduce((acc, current)=> acc + current.amount, 0)
+        },
+        {
+            id: 11,
+            year: currentMonth < 12 ? currentYear - 1 : currentYear,
+            name: "Dec",
+            saved_amount: deposits.filter((deposit)=> {
+                const date = Temporal.Now.plainDateISO(deposit.created_at)
+                return date.month === 12 && date.year === (currentMonth < 12 ? currentYear - 1 : currentYear)
+            }).reduce((acc, current)=> acc + current.amount, 0)
+        }
+    ]
+    const monthSorted =  [...months].sort((a, b)=>{
+        if(a.year < b.year){
+            return 1
+        }
+        if(a.year > b.year){
+            return -1
+        }
+        if(a.id < b.id){
+            return 1
+        }
+        return -1
+    })
+    
+    return width >= 1440 ? monthSorted :  width >= 1104 ? monthSorted.slice(0, 9) : monthSorted.slice(0,6)
+}
